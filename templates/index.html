@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saachi Goyal - ODES</title>
+    <style>
+     body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #00ACFA;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1 {
+            margin: 0;
+        }
+        h2 {
+            color: #00ACFA;
+        }
+        .content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #00ACFA;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .upload-form {
+            margin-top: 2rem;
+        }
+        .upload-form input[type="file"] {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Object Detection for Estrous Staging (ODES)</h1>
+        <p>Machine Learning Tool</p>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>About ODES</h2>
+            <p>ODES (Object Detection for Estrous Staging) is a machine learning tool designed to detect and classify cell
+                types for monitoring the estrous cycle in female mice.
+                This advanced tool assists in biological research and veterinary diagnostics by providing precise and
+                automated analysis of cell types, which is crucial for studying reproductive health and
+                various related phenomena.</p>
+        </div>
+
+        <div class="content upload-form">
+            <h2>Upload your images</h2>
+            <form action = "/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" multiple />
+                <input type = "submit" value="Upload">
+            </form>
+        </div>
+
+        <div>&nbsp;</div>
+        <div class="content">
+            <h2>Contact</h2>
+            <p>If you have any questions or would like to learn more about ODES, feel free to reach out to me via the contact form or email.</p>
+            <p>Email: saachi.goyal@example.com</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Saachi Goyal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

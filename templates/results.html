@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saachi Goyal - ODES</title>
+    <script type="text/javascript">
+        function showImage(original_image, annotated_image) {
+            window.open("images?original-image="+original_image+"&annotated-image="+annotated_image",
+            "preview");
+
+        }
+    </script>
+    <script>
+        function magnify(imgID, zoom) {
+          var img, glass, w, h, bw;
+          img = document.getElementById(imgID);
+
+          /* Create magnifier glass: */
+          glass = document.createElement("DIV");
+          glass.setAttribute("class", "img-magnifier-glass");
+
+          /* Insert magnifier glass: */
+          img.parentElement.insertBefore(glass, img);
+
+          /* Set background properties for the magnifier glass: */
+          glass.style.backgroundImage = "url('" + img.src + "')";
+          glass.style.backgroundRepeat = "no-repeat";
+          glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+          bw = 3;
+          w = glass.offsetWidth / 2;
+          h = glass.offsetHeight / 2;
+
+          /* Execute a function when someone moves the magnifier glass over the image: */
+          glass.addEventListener("mousemove", moveMagnifier);
+          img.addEventListener("mousemove", moveMagnifier);
+
+          /*and also for touch screens:*/
+          glass.addEventListener("touchmove", moveMagnifier);
+          img.addEventListener("touchmove", moveMagnifier);
+          function moveMagnifier(e) {
+            var pos, x, y;
+            /* Prevent any other actions that may occur when moving over the image */
+            e.preventDefault();
+            /* Get the cursor's x and y positions: */
+            pos = getCursorPos(e);
+            x = pos.x;
+            y = pos.y;
+            /* Prevent the magnifier glass from being positioned outside the image: */
+            if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+            if (x < w / zoom) {x = w / zoom;}
+            if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+            if (y < h / zoom) {y = h / zoom;}
+            /* Set the position of the magnifier glass: */
+            glass.style.left = (x - w) + "px";
+            glass.style.top = (y - h) + "px";
+            /* Display what the magnifier glass "sees": */
+            glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+          }
+
+        function getCursorPos(e) {
+            var a, x = 0, y = 0;
+            e = e || window.event;
+            /* Get the x and y positions of the image: */
+            a = img.getBoundingClientRect();
+            /* Calculate the cursor's x and y coordinates, relative to the image: */
+            x = e.pageX - a.left;
+            y = e.pageY - a.top;
+            /* Consider any page scrolling: */
+            x = x - window.pageXOffset;
+            y = y - window.pageYOffset;
+            return {x : x, y : y};
+        }
+    }
+    </script>
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #00ACFA;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1 {
+            margin: 0;
+        }
+        h2 {
+            color: #00ACFA;
+        }
+        .content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #00ACFA;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .upload-form {
+            margin-top: 2rem;
+        }
+        .upload-form input[type="file"] {
+            margin-bottom: 1rem;
+        }
+        * {box-sizing: border-box;}
+
+        .img-magnifier-container {
+          position:relative;
+        }
+
+        .img-magnifier-glass {
+          position: absolute;
+          border: 3px solid #000;
+          border-radius: 50%;
+          cursor: none;
+          /*Set the size of the magnifier glass:*/
+          width: 100px;
+          height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Object Detection for Estrous Staging (ODES)</h1>
+        <p>Machine Learning Tool</p>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>About ODES</h2>
+            <p>ODES (Object Detection for Estrous Staging) is a machine learning tool designed to detect and classify cell
+                types for monitoring the estrous cycle in female mice.
+                This advanced tool assists in biological research and veterinary diagnostics by providing precise and
+                automated analysis of cell types, which is crucial for studying reproductive health and
+                various related phenomena.</p>
+        </div>
+
+        <div class="main">
+            {{ table_data|safe}}
+        </div>
+
+        <div>&nbsp;</div>
+        <div class="content">
+            <h2>Contact</h2>
+            <p>If you have any questions or would like to learn more about ODES, feel free to reach out to me via the contact form or email.</p>
+            <p>Email: saachi.goyal@example.com</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Saachi Goyal. All rights reserved.</p>
+    </footer>
+    <script>
+    /* Initiate Magnify Function
+    with the id of the image, and the strength of the magnifier glass:*/
+    magnify("orig-img", 5);
+    magnify("ann-img", 10);
+    </script>
+</body>
+</html>
